@@ -38,7 +38,15 @@ export const Input = ({
           {required && <span className={classes.requiredIndicator}>*</span>}
         </label>
       )}
-      <input id={inputId} ref={ref} disabled={disabled} className={classes.input} aria-invalid={isInvalid} {...props} />
+      <input
+        id={inputId}
+        ref={ref}
+        disabled={disabled}
+        className={classes.input}
+        aria-invalid={isInvalid}
+        required={required}
+        {...props}
+      />
       {errorText ? (
         <span className={classes.description}>{errorText}</span>
       ) : description ? (
