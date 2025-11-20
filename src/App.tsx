@@ -1,4 +1,4 @@
-import { Input } from '@/components/Input/Input';
+import { Input } from '@/components/input/Input';
 import { Button } from './components/button/Button';
 import { css } from '@styled-system/css';
 

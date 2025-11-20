@@ -14,7 +14,7 @@ if (!/^[A-Z][a-zA-Z0-9]*$/.test(componentName)) {
   process.exit(1);
 }
 
-const componentDir = path.join(process.cwd(), 'src/components', componentName);
+const componentDir = path.join(process.cwd(), 'src/components', componentName.toLocaleLowerCase());
 
 if (fs.existsSync(componentDir)) {
   console.error(`${componentName} 컴포넌트가 이미 존재합니다.`);
