@@ -6,9 +6,9 @@ export const semanticColors = {
     fg: { value: '#ffffff' },
   },
   secondary: {
-    DEFAULT: { value: '{colors.gray.100}' },
-    hover: { value: '{colors.gray.200}' },
-    active: { value: '{colors.gray.300}' },
+    DEFAULT: { value: '{colors.violet.100}' },
+    hover: { value: '{colors.violet.200}' },
+    active: { value: '{colors.violet.300}' },
     fg: { value: '{colors.gray.900}' },
   },
   danger: {

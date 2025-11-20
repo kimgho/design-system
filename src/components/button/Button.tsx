@@ -16,12 +16,13 @@ export const Button = ({
   disabled,
   children,
   fallback = '로딩 중...',
+  ref,
   ...props
 }: ButtonProps) => {
   const isBusy = isLoading || disabled;
 
   return (
-    <BaseButton type={type} disabled={isBusy} aria-disabled={isBusy} aria-busy={isLoading} {...props}>
+    <BaseButton type={type} ref={ref} disabled={isBusy} aria-disabled={isBusy} aria-busy={isLoading} {...props}>
       {isLoading ? fallback : children}
     </BaseButton>
   );

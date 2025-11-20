@@ -1620,7 +1620,7 @@ const tokens = {
     "variable": "var(--colors-success-500)"
   },
   "colors.error.500": {
-    "value": "oklch(0.645 0.216 16.44)",
+    "value": "oklch(0.5601 0.2213 23.21)",
     "variable": "var(--colors-error-500)"
   },
   "colors.warn.500": {
@@ -1756,15 +1756,15 @@ const tokens = {
     "variable": "var(--colors-primary-fg)"
   },
   "colors.secondary": {
-    "value": "var(--colors-gray-100)",
+    "value": "var(--colors-violet-100)",
     "variable": "var(--colors-secondary)"
   },
   "colors.secondary.hover": {
-    "value": "var(--colors-gray-200)",
+    "value": "var(--colors-violet-200)",
     "variable": "var(--colors-secondary-hover)"
   },
   "colors.secondary.active": {
-    "value": "var(--colors-gray-300)",
+    "value": "var(--colors-violet-300)",
     "variable": "var(--colors-secondary-active)"
   },
   "colors.secondary.fg": {
