@@ -22,7 +22,7 @@ if (fs.existsSync(componentDir)) {
 }
 
 const componentTemplate = `import { css } from '@styled-system/css';
-import type { ComponentProps } from 'react';
+import type { ComponentProps } from '@styled-system/types';
 
 export type ${componentName}Props = ComponentProps<'div'> & {
   // props 정의
