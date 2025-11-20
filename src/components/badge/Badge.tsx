@@ -15,7 +15,7 @@ export type BadgeProps = ComponentProps<'div'> &
   };
 
 export const Badge = ({ className, variant, size, selected, children, onClick, ...props }: BadgeProps) => {
-  const isInteractive = !!onClick || selected !== undefined;
+  const isInteractive = !!onClick;
 
   return (
     <BaseBadge
