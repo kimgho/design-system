@@ -1,0 +1,69 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { colorTokens } from '../theme/tokens/colors';
+
+export const getColors = colorObj => {
+  return Object.keys(colorObj).reduce((acc, key) => {
+    if (colorObj[key].value) {
+      acc[key] = colorObj[key].value;
+    }
+    return acc;
+  }, {});
+};
+
+<Meta title="Design System/Colors" />
+
+# Design System Colors
+
+## Semantic Colors (Theme)
+
+실제 컴포넌트에서 사용하는 의미론적 컬러입니다.
+
+<ColorPalette>
+  <ColorItem
+    title="Violet계열"
+    subtitle="주계열1"
+    colors={{
+      DEFAULT: colorTokens.violet[500].value,
+      Hover: colorTokens.violet[600].value,
+      Active: colorTokens.violet[700].value,
+    }}
+  />
+  <ColorItem
+    title="Sky계열"
+    subtitle="주계열2"
+    colors={{
+      DEFAULT: colorTokens.sky[500].value,
+      Hover: colorTokens.sky[600].value,
+    }}
+  />
+  <ColorItem
+    title="상태 색"
+    subtitle="Success(Teal)"
+    colors={{
+      Success: colorTokens.success[500].value,
+    }}
+  />
+  <ColorItem
+    title="상태 색"
+    subtitle="Warning(Amber)"
+    colors={{
+      Warning: colorTokens.warn[500].value,
+    }}
+  />
+  <ColorItem
+    title="상태 색"
+    subtitle="Error(Rose)"
+    colors={{
+      Error: colorTokens.error[500].value,
+    }}
+/>
+
+</ColorPalette>
+
+## Primitive Colors (Palette)
+
+<ColorPalette>
+  <ColorItem title="Gray" subtitle="Neutral Colors" colors={getColors(colorTokens.gray)} />
+  <ColorItem title="Violet" subtitle="Primary Base (OKLCH)" colors={getColors(colorTokens.violet)} />
+  <ColorItem title="Sky" subtitle="Secondary Base (OKLCH)" colors={getColors(colorTokens.sky)} />
+</ColorPalette>
