@@ -11,7 +11,7 @@
     "prepare": "panda codegen",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "gen": "node scripts/generateComponent.ts"
+    "gen": "node scripts/generateComponent.js"
   },
   "dependencies": {
     "react": "^19.2.0",
