@@ -1756,15 +1756,15 @@ const tokens = {
     "variable": "var(--colors-primary-fg)"
   },
   "colors.secondary": {
-    "value": "var(--colors-gray-100)",
+    "value": "var(--colors-violet-100)",
     "variable": "var(--colors-secondary)"
   },
   "colors.secondary.hover": {
-    "value": "var(--colors-gray-200)",
+    "value": "var(--colors-violet-200)",
     "variable": "var(--colors-secondary-hover)"
   },
   "colors.secondary.active": {
-    "value": "var(--colors-gray-300)",
+    "value": "var(--colors-violet-300)",
     "variable": "var(--colors-secondary-active)"
   },
   "colors.secondary.fg": {
