@@ -2,7 +2,6 @@
   "name": "design-system",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -11,7 +10,13 @@
     "prepare": "panda codegen",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "gen": "node scripts/generateComponent.ts"
+    "gen": "node scripts/generateComponent.ts",
+    "test": "vitest run --project=unit",
+    "test:watch": "vitest --project=unit",
+    "test:ui": "vitest --ui --project=unit",
+    "test:coverage": "vitest run --project=unit --coverage",
+    "test:storybook": "vitest run --project=storybook",
+    "test:all": "vitest run"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -43,5 +48,9 @@
     "typescript-eslint": "^8.46.3",
     "vite": "^7.2.2",
     "vitest": "^4.0.10"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "jsdom": "^25.0.1",
   }
 }
