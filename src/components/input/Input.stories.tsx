@@ -1,4 +1,4 @@
-import { Input } from '@/components/Input/Input';
+import { Input } from '@/components/input/Input';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { css } from '@styled-system/css';
 
