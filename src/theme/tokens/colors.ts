@@ -46,7 +46,7 @@ export const colorTokens = {
   },
   error: {
     // rose계열
-    500: { value: 'oklch(0.645 0.216 16.44)' },
+    500: { value: 'oklch(0.5601 0.2213 23.21)' },
   },
   warn: {
     // amber계열

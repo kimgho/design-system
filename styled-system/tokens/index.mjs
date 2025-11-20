@@ -1620,7 +1620,7 @@ const tokens = {
     "variable": "var(--colors-success-500)"
   },
   "colors.error.500": {
-    "value": "oklch(0.645 0.216 16.44)",
+    "value": "oklch(0.5601 0.2213 23.21)",
     "variable": "var(--colors-error-500)"
   },
   "colors.warn.500": {
