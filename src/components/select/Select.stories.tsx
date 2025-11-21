@@ -1,4 +1,3 @@
-// src/components/select/Select.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Select } from './Select';
 import { css } from '@styled-system/css';
