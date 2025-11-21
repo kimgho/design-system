@@ -23,6 +23,7 @@ if (fs.existsSync(componentDir)) {
 
 const componentTemplate = `import { css } from '@styled-system/css';
 import type { ComponentProps } from '@styled-system/types';
+import { ${componentName.toLocaleLowerCase()}Recipe } from '@/theme/recipes/${componentName.toLocaleLowerCase()}';
 
 export type ${componentName}Props = ComponentProps<'div'> & {
   // props 정의
