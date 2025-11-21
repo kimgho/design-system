@@ -4,6 +4,7 @@ export const badgeRecipe = cva({
   base: {
     display: 'inline-flex',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 'full',
     px: '3',
     py: '1',

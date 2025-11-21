@@ -1,0 +1,71 @@
+import { Meta, Canvas, Controls, Story, Description, ArgTypes, Source } from '@storybook/addon-docs/blocks';
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+사용자가 옵션 목록에서 하나의 값을 선택할 수 있게 해주는 컴포넌트입니다.
+네이티브 HTML `<select>` 요소를 기반으로 스타일링되어, 접근성과 모바일 사용성을 보장합니다.
+
+<Canvas of={SelectStories.Default} />
+
+## Props
+
+<Controls />
+
+## Examples
+
+### Sizes
+
+`Select` 컴포넌트는 3가지 크기(`sm`, `md`, `lg`)를 지원합니다.
+
+<Canvas of={SelectStories.Sizes} />
+
+<Source
+  language="tsx"
+  code={`
+    <Select size="sm" label="Small" placeholder="Small" />
+    <Select size="md" label="Medium" placeholder="Medium" />
+    <Select size="lg" label="Large" placeholder="Large" />
+  `}
+/>
+
+<br />
+
+### States
+
+필수 입력(`required`), 에러(`errorText`), 비활성화(`disabled`) 상태를 지원합니다.
+`errorText`가 존재하면 `invalid` 스타일이 자동으로 적용됩니다.
+
+<Canvas of={SelectStories.States} />
+
+<Source
+  language="tsx"
+  code={`
+{/* 기본 */}
+<Select label="Label" />
+
+{/* 필수 */}
+
+<Select label="Label" required />
+
+{/* 에러 (errorText가 있으면 invalid 스타일 적용됨) */}
+
+<Select label="Label" errorText="에러 메시지입니다" />
+
+{/* 비활성화 */}
+
+<Select label="Label" disabled />
+`} />
+
+## 사용 가이드 (Usage)
+
+`children` prop을 통해 `<option>` 태그를 주입하여 사용합니다.
+
+```tsx
+<Select label="과일 선택" placeholder="과일을 선택해주세요">
+  <option value="apple">사과</option>
+  <option value="banana">바나나</option>
+</Select>
+```
