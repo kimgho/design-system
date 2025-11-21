@@ -66,12 +66,39 @@ const indexTemplate = `export { ${componentName} } from './${componentName}';
 export type { ${componentName}Props } from './${componentName}';
 `;
 
+const recipeTemplate = `import { cva } from '@styled-system/css';
+
+  export const ${componentName.toLocaleLowerCase()}Recipe = cva({
+    base: {
+      // base 스타일
+    },
+    variants: {
+      variant: {
+        // variant 정의
+      },
+      size: {
+        sm: {},
+        md: {},
+        lg: {},
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  });
+  `;
+
 fs.mkdirSync(componentDir, { recursive: true });
 fs.writeFileSync(path.join(componentDir, `${componentName}.tsx`), componentTemplate);
 fs.writeFileSync(path.join(componentDir, `${componentName}.stories.tsx`), storyTemplate);
 fs.writeFileSync(path.join(componentDir, 'index.ts'), indexTemplate);
+fs.writeFileSync(
+  path.join(process.cwd(), 'src/theme/recipes', `${componentName.toLocaleLowerCase()}.ts`),
+  recipeTemplate
+);
 
 console.log(`   - ${componentName} 컴포넌트가 생성되었습니다.`);
 console.log(`   - src/components/${componentName}/${componentName}.tsx`);
 console.log(`   - src/components/${componentName}/${componentName}.stories.tsx`);
 console.log(`   - src/components/${componentName}/index.ts`);
+console.log(`   - src/theme/recipes/${componentName.toLocaleLowerCase()}.ts`);
