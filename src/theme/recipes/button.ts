@@ -46,13 +46,6 @@ export const buttonRecipe = cva({
         _hover: { bg: 'sky.50', borderColor: 'sky.300' },
         _active: { bg: 'sky.100' },
       },
-
-      ghost: {
-        bg: 'transparent',
-        color: 'sky.600',
-        _hover: { bg: 'sky.50' },
-        _active: { bg: 'sky.100' },
-      },
     },
     size: {
       sm: { h: '8', px: '3', fontSize: 'xs' },
