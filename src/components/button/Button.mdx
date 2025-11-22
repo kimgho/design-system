@@ -1,0 +1,90 @@
+import { Meta, Canvas, Controls, Story, Description, ArgTypes, Source } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+사용자의 액션을 트리거하는 버튼 컴포넌트입니다.
+다양한 스타일과 크기를 지원하며, 로딩 및 비활성화 상태를 처리할 수 있습니다.
+
+<Canvas of={ButtonStories.Default} />
+
+## Props
+
+<Controls />
+
+## Examples
+
+### Variants
+
+`Button` 컴포넌트는 3가지 스타일(`primary`, `secondary`, `outline`)을 지원합니다.
+
+<Canvas of={ButtonStories.Variants} />
+
+<Source
+  language="tsx"
+  code={`
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="outline">Outline</Button>
+  `}
+/>
+
+<br />
+
+### Sizes
+
+`Button` 컴포넌트는 4가지 크기(`sm`, `md`, `lg`, `icon`)를 지원합니다.
+
+<Canvas of={ButtonStories.Sizes} />
+
+<Source
+  language="tsx"
+  code={`
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+    <Button size="icon">Icon</Button>
+  `}
+/>
+
+<br />
+
+### States
+
+로딩(`isLoading`) 및 비활성화(`disabled`) 상태를 지원합니다.
+`isLoading` 상태일 때는 `fallback` prop으로 로딩 텍스트를 커스터마이징할 수 있습니다.
+
+<Canvas of={ButtonStories.States} />
+
+<Source
+  language="tsx"
+  code={`
+{/* 기본 */}
+<Button>Default</Button>
+
+{/* 로딩 */}
+
+<Button isLoading>Loading</Button>
+
+{/* 커스텀 로딩 텍스트 */}
+
+<Button isLoading fallback="처리 중...">
+  Submit
+</Button>
+
+{/* 비활성화 */}
+
+<Button disabled>Disabled</Button>
+`} />
+
+## 사용 가이드 (Usage)
+
+`children` prop을 통해 버튼 텍스트를 전달합니다.
+
+```tsx
+<Button variant="primary" size="md" onClick={handleClick}>
+  버튼 텍스트
+</Button>
+```

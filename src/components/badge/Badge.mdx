@@ -1,0 +1,100 @@
+import { Meta, Canvas, Controls, Story, Description, ArgTypes, Source } from '@storybook/addon-docs/blocks';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+상태나 카테고리를 나타내는 작은 라벨 컴포넌트입니다.
+다양한 스타일과 크기를 지원하며, 선택 가능한 인터랙티브 모드를 제공합니다.
+
+<Canvas of={BadgeStories.Default} />
+
+## Props
+
+<Controls />
+
+## Examples
+
+### Variants
+
+`Badge` 컴포넌트는 4가지 스타일(`primary`, `secondary`, `outline`, `destructive`)을 지원합니다.
+
+<Canvas of={BadgeStories.Variants} />
+
+<Source
+  language="tsx"
+  code={`
+    <Badge variant="primary">Primary</Badge>
+    <Badge variant="secondary">Secondary</Badge>
+    <Badge variant="outline">Outline</Badge>
+    <Badge variant="destructive">Destructive</Badge>
+  `}
+/>
+
+<br />
+
+### Sizes
+
+`Badge` 컴포넌트는 3가지 크기(`sm`, `md`, `lg`)를 지원합니다.
+
+<Canvas of={BadgeStories.Sizes} />
+
+<Source
+  language="tsx"
+  code={`
+    <Badge size="sm">Small</Badge>
+    <Badge size="md">Medium</Badge>
+    <Badge size="lg">Large</Badge>
+  `}
+/>
+
+<br />
+
+### Selected
+
+`selected` prop을 사용하여 선택 상태를 표현할 수 있습니다.
+`onClick`과 함께 사용하면 인터랙티브한 뱃지로 동작합니다.
+
+<Canvas of={BadgeStories.Selected} />
+
+<Source
+  language="tsx"
+  code={`
+{/* 선택됨 */}
+<Badge variant="primary" selected={true}>Selected</Badge>
+
+{/* 선택 안됨 */}
+
+<Badge variant="primary" selected={false}>
+  Unselected
+</Badge>
+
+{/* 인터랙티브 뱃지 */}
+
+<Badge variant="primary" selected={isSelected} onClick={() => setIsSelected(!isSelected)}>
+  Click me
+</Badge>
+`} />
+
+## 사용 가이드 (Usage)
+
+`children` prop을 통해 뱃지 텍스트를 전달합니다.
+
+```tsx
+<Badge variant="primary" size="md">
+  뱃지 텍스트
+</Badge>
+```
+
+### 인터랙티브 뱃지
+
+`onClick`을 전달하면 버튼 역할을 하는 인터랙티브 뱃지가 됩니다.
+
+```tsx
+const [selected, setSelected] = useState(false);
+
+<Badge variant="outline" selected={selected} onClick={() => setSelected(!selected)}>
+  Toggle Badge
+</Badge>;
+```

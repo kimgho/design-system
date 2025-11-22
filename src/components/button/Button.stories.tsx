@@ -5,7 +5,6 @@ import { css } from '@styled-system/css';
 const meta = {
   title: 'Component/Button',
   component: Button,
-  tags: ['autodocs'],
   decorators: [
     Story => (
       <div className={css({ m: 10 })}>
@@ -26,9 +25,36 @@ export const Default: Story = {
   },
 };
 
-export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-    children: '보조 버튼',
-  },
+export const Variants: Story = {
+  args: {},
+  render: () => (
+    <div className={css({ display: 'flex', flexDirection: 'row', gap: '6' })}>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  args: {},
+  render: () => (
+    <div className={css({ display: 'flex', flexDirection: 'row', gap: '6' })}>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+      <Button size="icon">Icon</Button>
+    </div>
+  ),
+};
+
+export const States: Story = {
+  args: {},
+  render: () => (
+    <div className={css({ display: 'flex', flexDirection: 'row', gap: '6' })}>
+      <Button>Default</Button>
+      <Button isLoading>Loading</Button>
+      <Button disabled>Disabled</Button>
+    </div>
+  ),
 };
