@@ -89,9 +89,49 @@ const recipeTemplate = `import { cva } from '@styled-system/css';
   });
   `;
 
+const mdxTemplate = `import { Meta, Canvas, Controls, Source } from '@storybook/addon-docs/blocks';
+import * as ${componentName}Stories from './${componentName}.stories';
+
+<Meta of={${componentName}Stories} />
+
+# ${componentName}
+
+컴포넌트에 대한 설명을 작성해주세요.
+
+<Canvas of={${componentName}Stories.Default} />
+
+## Props
+
+<Controls />
+
+## Examples
+
+### Sizes
+
+\`${componentName}\` 컴포넌트는 3가지 크기(\`sm\`, \`md\`, \`lg\`)를 지원합니다.
+
+{/* <Canvas of={${componentName}Stories.Sizes} /> */}
+
+<Source
+  language="tsx"
+  code={\`
+    <${componentName} size="sm" />
+    <${componentName} size="md" />
+    <${componentName} size="lg" />
+  \`}
+/>
+
+## 사용 가이드 (Usage)
+
+\`\`\`tsx
+<${componentName} />
+\`\`\`
+`;
+
 fs.mkdirSync(componentDir, { recursive: true });
 fs.writeFileSync(path.join(componentDir, `${componentName}.tsx`), componentTemplate);
 fs.writeFileSync(path.join(componentDir, `${componentName}.stories.tsx`), storyTemplate);
+fs.writeFileSync(path.join(componentDir, `${componentName}.mdx`), mdxTemplate);
 fs.writeFileSync(path.join(componentDir, 'index.ts'), indexTemplate);
 fs.writeFileSync(
   path.join(process.cwd(), 'src/theme/recipes', `${componentName.toLocaleLowerCase()}.ts`),
@@ -99,7 +139,8 @@ fs.writeFileSync(
 );
 
 console.log(`   - ${componentName} 컴포넌트가 생성되었습니다.`);
-console.log(`   - src/components/${componentName}/${componentName}.tsx`);
-console.log(`   - src/components/${componentName}/${componentName}.stories.tsx`);
-console.log(`   - src/components/${componentName}/index.ts`);
+console.log(`   - src/components/${componentName.toLocaleLowerCase()}/${componentName}.tsx`);
+console.log(`   - src/components/${componentName.toLocaleLowerCase()}/${componentName}.stories.tsx`);
+console.log(`   - src/components/${componentName.toLocaleLowerCase()}/${componentName}.mdx`);
+console.log(`   - src/components/${componentName.toLocaleLowerCase()}/index.ts`);
 console.log(`   - src/theme/recipes/${componentName.toLocaleLowerCase()}.ts`);
