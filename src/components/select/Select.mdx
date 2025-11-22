@@ -6,7 +6,7 @@ import * as SelectStories from './Select.stories';
 # Select
 
 사용자가 옵션 목록에서 하나의 값을 선택할 수 있게 해주는 컴포넌트입니다.
-네이티브 HTML `<select>` 요소를 기반으로 스타일링되어, 접근성과 모바일 사용성을 보장합니다.
+Custom Select로 구현되어 스타일링과 기능 확장이 자유롭습니다.
 
 <Canvas of={SelectStories.Default} />
 
@@ -25,9 +25,18 @@ import * as SelectStories from './Select.stories';
 <Source
   language="tsx"
   code={`
-    <Select size="sm" label="Small" placeholder="Small" />
-    <Select size="md" label="Medium" placeholder="Medium" />
-    <Select size="lg" label="Large" placeholder="Large" />
+<Select.Root size="sm" placeholder="Small">
+  <Select.Label>Small</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">Option 1</Select.Option>
+    </Select.Content>
+  </Select.Control>
+</Select.Root>
   `}
 />
 
@@ -35,8 +44,7 @@ import * as SelectStories from './Select.stories';
 
 ### States
 
-필수 입력(`required`), 에러(`errorText`), 비활성화(`disabled`) 상태를 지원합니다.
-`errorText`가 존재하면 `invalid` 스타일이 자동으로 적용됩니다.
+필수 입력(`required`), 에러(`invalid`), 비활성화(`disabled`) 상태를 지원합니다.
 
 <Canvas of={SelectStories.States} />
 
@@ -44,28 +52,138 @@ import * as SelectStories from './Select.stories';
   language="tsx"
   code={`
 {/* 기본 */}
-<Select label="Label" />
+<Select.Root placeholder="선택하세요">
+  <Select.Label>Label</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">Option</Select.Option>
+    </Select.Content>
+  </Select.Control>
+</Select.Root>
 
 {/* 필수 */}
 
-<Select label="Label" required />
+<Select.Root required placeholder="선택하세요">
+  <Select.Label>Label</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">Option</Select.Option>
+    </Select.Content>
+  </Select.Control>
+</Select.Root>
 
-{/* 에러 (errorText가 있으면 invalid 스타일 적용됨) */}
+{/* 에러 */}
 
-<Select label="Label" errorText="에러 메시지입니다" />
+<Select.Root invalid placeholder="선택하세요">
+  <Select.Label>Label</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">Option</Select.Option>
+    </Select.Content>
+  </Select.Control>
+  <Select.ErrorText>에러 메시지입니다</Select.ErrorText>
+</Select.Root>
 
 {/* 비활성화 */}
 
-<Select label="Label" disabled />
+<Select.Root disabled placeholder="선택하세요">
+  <Select.Label>Label</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">Option</Select.Option>
+    </Select.Content>
+  </Select.Control>
+</Select.Root>
 `} />
 
 ## 사용 가이드 (Usage)
 
-`children` prop을 통해 `<option>` 태그를 주입하여 사용합니다.
+Compound Component 패턴으로 각 부분을 자유롭게 조합할 수 있습니다.
 
 ```tsx
-<Select label="과일 선택" placeholder="과일을 선택해주세요">
-  <option value="apple">사과</option>
-  <option value="banana">바나나</option>
-</Select>
+<Select.Root placeholder="과일을 선택해주세요" onValueChange={setValue}>
+  <Select.Label>과일 선택</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="apple">사과</Select.Option>
+      <Select.Option value="banana">바나나</Select.Option>
+      <Select.Option value="orange">오렌지</Select.Option>
+    </Select.Content>
+  </Select.Control>
+  <Select.Description>좋아하는 과일을 선택하세요</Select.Description>
+</Select.Root>
+```
+
+### Controlled 사용
+
+`value`와 `onValueChange`를 사용하여 상태를 직접 관리할 수 있습니다.
+
+```tsx
+const [value, setValue] = useState('');
+
+<Select.Root value={value} onValueChange={setValue} placeholder="선택하세요">
+  <Select.Label>카테고리</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">카테고리 1</Select.Option>
+      <Select.Option value="2">카테고리 2</Select.Option>
+    </Select.Content>
+  </Select.Control>
+</Select.Root>;
+```
+
+### 에러 처리
+
+`invalid` prop과 `ErrorText`를 함께 사용하면 에러 스타일이 적용됩니다.
+
+```tsx
+const [error, setError] = useState('');
+
+<Select.Root
+  invalid={!!error}
+  onValueChange={value => {
+    if (!value) {
+      setError('카테고리를 선택해주세요');
+    } else {
+      setError('');
+    }
+  }}
+  placeholder="선택하세요"
+>
+  <Select.Label>카테고리</Select.Label>
+  <Select.Control>
+    <Select.Trigger>
+      <Select.Value />
+    </Select.Trigger>
+    <Select.Icon />
+    <Select.Content>
+      <Select.Option value="1">카테고리 1</Select.Option>
+    </Select.Content>
+  </Select.Control>
+  <Select.ErrorText>{error}</Select.ErrorText>
+</Select.Root>;
 ```
