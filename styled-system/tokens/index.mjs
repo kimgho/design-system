@@ -111,66 +111,6 @@ const tokens = {
     "value": "9999px",
     "variable": "var(--radii-full)"
   },
-  "lineHeights.none": {
-    "value": "1",
-    "variable": "var(--line-heights-none)"
-  },
-  "lineHeights.tight": {
-    "value": "1.25",
-    "variable": "var(--line-heights-tight)"
-  },
-  "lineHeights.snug": {
-    "value": "1.375",
-    "variable": "var(--line-heights-snug)"
-  },
-  "lineHeights.normal": {
-    "value": "1.5",
-    "variable": "var(--line-heights-normal)"
-  },
-  "lineHeights.relaxed": {
-    "value": "1.625",
-    "variable": "var(--line-heights-relaxed)"
-  },
-  "lineHeights.loose": {
-    "value": "2",
-    "variable": "var(--line-heights-loose)"
-  },
-  "fonts.sans": {
-    "value": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
-    "variable": "var(--fonts-sans)"
-  },
-  "fonts.serif": {
-    "value": "ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-    "variable": "var(--fonts-serif)"
-  },
-  "fonts.mono": {
-    "value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
-    "variable": "var(--fonts-mono)"
-  },
-  "letterSpacings.tighter": {
-    "value": "-0.05em",
-    "variable": "var(--letter-spacings-tighter)"
-  },
-  "letterSpacings.tight": {
-    "value": "-0.025em",
-    "variable": "var(--letter-spacings-tight)"
-  },
-  "letterSpacings.normal": {
-    "value": "0em",
-    "variable": "var(--letter-spacings-normal)"
-  },
-  "letterSpacings.wide": {
-    "value": "0.025em",
-    "variable": "var(--letter-spacings-wide)"
-  },
-  "letterSpacings.wider": {
-    "value": "0.05em",
-    "variable": "var(--letter-spacings-wider)"
-  },
-  "letterSpacings.widest": {
-    "value": "0.1em",
-    "variable": "var(--letter-spacings-widest)"
-  },
   "shadows.2xs": {
     "value": "0 1px rgb(0 0 0 / 0.05)",
     "variable": "var(--shadows-2xs)"
@@ -1627,21 +1567,21 @@ const tokens = {
     "value": "oklch(0.769 0.188 70.08)",
     "variable": "var(--colors-warn-500)"
   },
+  "fonts.serif": {
+    "value": "ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
+    "variable": "var(--fonts-serif)"
+  },
+  "fonts.sans": {
+    "value": "Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+    "variable": "var(--fonts-sans)"
+  },
+  "fonts.mono": {
+    "value": "SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+    "variable": "var(--fonts-mono)"
+  },
   "fontSizes.2xs": {
     "value": "0.5rem",
     "variable": "var(--font-sizes-2xs)"
-  },
-  "fontSizes.2xl": {
-    "value": "1.5rem",
-    "variable": "var(--font-sizes-2xl)"
-  },
-  "fontSizes.3xl": {
-    "value": "1.875rem",
-    "variable": "var(--font-sizes-3xl)"
-  },
-  "fontSizes.4xl": {
-    "value": "2.25rem",
-    "variable": "var(--font-sizes-4xl)"
   },
   "fontSizes.5xl": {
     "value": "3rem",
@@ -1683,6 +1623,18 @@ const tokens = {
     "value": "1.25rem",
     "variable": "var(--font-sizes-xl)"
   },
+  "fontSizes.2xl": {
+    "value": "1.5rem",
+    "variable": "var(--font-sizes-2xl)"
+  },
+  "fontSizes.3xl": {
+    "value": "1.875rem",
+    "variable": "var(--font-sizes-3xl)"
+  },
+  "fontSizes.4xl": {
+    "value": "2.25rem",
+    "variable": "var(--font-sizes-4xl)"
+  },
   "fontWeights.thin": {
     "value": "100",
     "variable": "var(--font-weights-thin)"
@@ -1694,10 +1646,6 @@ const tokens = {
   "fontWeights.light": {
     "value": "300",
     "variable": "var(--font-weights-light)"
-  },
-  "fontWeights.semibold": {
-    "value": "600",
-    "variable": "var(--font-weights-semibold)"
   },
   "fontWeights.extrabold": {
     "value": "800",
@@ -1715,9 +1663,61 @@ const tokens = {
     "value": 500,
     "variable": "var(--font-weights-medium)"
   },
+  "fontWeights.semibold": {
+    "value": 600,
+    "variable": "var(--font-weights-semibold)"
+  },
   "fontWeights.bold": {
     "value": 700,
     "variable": "var(--font-weights-bold)"
+  },
+  "lineHeights.none": {
+    "value": 1,
+    "variable": "var(--line-heights-none)"
+  },
+  "lineHeights.tight": {
+    "value": 1.25,
+    "variable": "var(--line-heights-tight)"
+  },
+  "lineHeights.snug": {
+    "value": 1.375,
+    "variable": "var(--line-heights-snug)"
+  },
+  "lineHeights.normal": {
+    "value": 1.5,
+    "variable": "var(--line-heights-normal)"
+  },
+  "lineHeights.relaxed": {
+    "value": 1.625,
+    "variable": "var(--line-heights-relaxed)"
+  },
+  "lineHeights.loose": {
+    "value": 2,
+    "variable": "var(--line-heights-loose)"
+  },
+  "letterSpacings.tighter": {
+    "value": "-0.05em",
+    "variable": "var(--letter-spacings-tighter)"
+  },
+  "letterSpacings.tight": {
+    "value": "-0.025em",
+    "variable": "var(--letter-spacings-tight)"
+  },
+  "letterSpacings.normal": {
+    "value": "0em",
+    "variable": "var(--letter-spacings-normal)"
+  },
+  "letterSpacings.wide": {
+    "value": "0.025em",
+    "variable": "var(--letter-spacings-wide)"
+  },
+  "letterSpacings.wider": {
+    "value": "0.05em",
+    "variable": "var(--letter-spacings-wider)"
+  },
+  "letterSpacings.widest": {
+    "value": "0.1em",
+    "variable": "var(--letter-spacings-widest)"
   },
   "breakpoints.sm": {
     "value": "640px",

@@ -1,0 +1,176 @@
+import { Meta, Typeset, Unstyled } from '@storybook/addon-docs/blocks';
+import { fonts, fontSizes, fontWeights, lineHeights } from '../theme/tokens/typography';
+import { textStyles } from '../theme/textStyles';
+
+export const getValues = tokens => Object.values(tokens).map(t => t.value);
+
+export const resolveToken = tokenRef => {
+  const match = tokenRef.match(/\{(\w+)\.(.+?)\}/);
+  if (match) {
+    const [, tokenType, tokenKey] = match;
+    if (tokenType === 'fontSizes') return fontSizes[tokenKey]?.value || tokenRef;
+    if (tokenType === 'fontWeights') return fontWeights[tokenKey]?.value || tokenRef;
+  }
+  return tokenRef;
+};
+
+export const SampleText = '다람쥐 헌 쳇바퀴에 타고파 The quick brown fox jumps over the lazy dog.';
+
+<Meta title="Design System/Typography" />
+
+# Typography
+
+디자인 시스템에서 사용하는 서체와 텍스트 스타일 가이드입니다.
+
+---
+
+## Text Styles (Semantic)
+
+단순히 폰트 사이즈만 지정하는 것이 아니라, `FontSize`, `LineHeight`, `FontWeight`, `LetterSpacing`이 조합된 **의미론적 스타일**입니다.
+`textStyle` 속성을 통해 사용합니다.
+
+### Heading
+
+제목에 사용되는 스타일입니다. 굵은 웨이트와 좁은 자간/행간이 특징입니다.
+
+<Unstyled>
+  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem', marginBottom: '2rem' }}>
+    <thead>
+      <tr style={{ borderBottom: '1px solid #e5e7eb', textAlign: 'left' }}>
+        <th style={{ padding: '1rem', width: '20%' }}>Token Name</th>
+        <th style={{ padding: '1rem', width: '30%' }}>Specs</th>
+        <th style={{ padding: '1rem' }}>Preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(textStyles.heading).map(([key, style]) => {
+        const actualStyle = style.value;
+        return (
+          <tr key={key} style={{ borderBottom: '1px solid #f3f4f6' }}>
+            <td style={{ padding: '1rem', color: '#ec4899', fontWeight: '600' }}>heading.{key}</td>
+            <td style={{ padding: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+              <div>Size: {resolveToken(actualStyle.fontSize)}</div>
+              <div>LineHeight: {actualStyle.lineHeight}</div>
+              <div>Weight: {resolveToken(actualStyle.fontWeight)}</div>
+            </td>
+            <td style={{ padding: '1rem' }}>
+              <div
+                style={{
+                  fontSize: fontSizes[key]
+                    ? fontSizes[key].value
+                    : actualStyle.fontSize.replace('{fontSizes.', '').replace('}', ''),
+                  lineHeight: actualStyle.lineHeight,
+                  fontWeight: 700, 
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                {key === '2xl' || key === '3xl' ? 'Display Title' : 'Heading Title'}
+              </div>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+
+  </table>
+</Unstyled>
+
+### Body
+
+본문에 사용되는 스타일입니다. 가독성을 위해 넉넉한 행간을 가집니다.
+
+<Unstyled>
+  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
+    <thead>
+      <tr style={{ borderBottom: '1px solid #e5e7eb', textAlign: 'left' }}>
+        <th style={{ padding: '1rem', width: '20%' }}>Token Name</th>
+        <th style={{ padding: '1rem', width: '30%' }}>Specs</th>
+        <th style={{ padding: '1rem' }}>Preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(textStyles.body).map(([key, style]) => {
+        const actualStyle = style.value;
+        return (
+          <tr key={key} style={{ borderBottom: '1px solid #f3f4f6' }}>
+            <td style={{ padding: '1rem', color: '#ec4899', fontWeight: '600' }}>body.{key}</td>
+            <td style={{ padding: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
+              <div>Size: {resolveToken(actualStyle.fontSize)}</div>
+              <div>LH: {actualStyle.lineHeight}</div>
+            </td>
+            <td style={{ padding: '1rem' }}>
+              <div
+                style={{
+                  fontSize: fontSizes[key] ? fontSizes[key].value : '1rem',
+                  lineHeight: actualStyle.lineHeight,
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                {SampleText}
+              </div>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</Unstyled>
+
+---
+
+## Font Sizes (Primitive)
+
+기본적으로 정의된 폰트 크기 토큰입니다.
+
+<Typeset
+  fontSizes={getValues(fontSizes)}
+  fontWeight={fontWeights.normal.value}
+  sampleText={SampleText}
+  fontFamily="sans-serif"
+/>
+
+## Font Weights
+
+<Unstyled>
+  <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+    {Object.entries(fontWeights).map(([name, token]) => (
+      <div key={name} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: token.value,
+            fontFamily: 'sans-serif',
+          }}
+        >
+          Aa
+        </div>
+        <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+          <span style={{ fontWeight: 'bold', color: '#111' }}>{name}</span> ({token.value})
+        </div>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+## Font Family
+
+<Unstyled>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    {Object.entries(fonts).map(([name, token]) => (
+      <div key={name} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+          <span style={{ fontWeight: 'bold', color: '#111' }}>{name}</span>
+        </div>
+        <div
+          style={{
+            fontSize: '1.5rem',
+            fontFamily: token.value,
+          }}
+        >
+          {SampleText}
+        </div>
+        <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontFamily: 'monospace' }}>{token.value}</div>
+      </div>
+    ))}
+  </div>
+</Unstyled>
