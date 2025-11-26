@@ -1,0 +1,256 @@
+import { Meta, Canvas, Controls, Story, Description, ArgTypes, Source } from '@storybook/addon-docs/blocks';
+import * as RadioStories from './Radio.stories';
+
+<Meta of={RadioStories} />
+
+# Radio
+
+사용자가 여러 옵션 중 하나를 선택할 수 있는 라디오 버튼 컴포넌트입니다.
+Compound Component 패턴으로 라벨, 옵션, 설명을 유연하게 구성할 수 있습니다.
+
+<Canvas of={RadioStories.Default} />
+
+## Props
+
+<Controls />
+
+## Examples
+
+### States
+
+`Radio` 컴포넌트는 필수(`required`), 에러(`invalid`), 비활성화(`disabled`) 상태를 지원합니다.
+
+<Canvas of={RadioStories.States} />
+
+<Source
+  language="tsx"
+  code={`
+{/* 에러 상태 */}
+<Radio.Root invalid value={value} onValueChange={setValue}>
+  <Radio.Label>유효하지 않은 상태</Radio.Label>
+
+{' '}
+
+<Radio.Item value="option1">
+  <Radio.Control />
+  <Radio.Indicator />
+  <Radio.Text>옵션 1</Radio.Text>
+</Radio.Item>
+
+{' '}
+
+<Radio.Item value="option2">
+  <Radio.Control />
+  <Radio.Indicator />
+  <Radio.Text>옵션 2</Radio.Text>
+</Radio.Item>
+
+  <Radio.Description>다시 선택해주세요.</Radio.Description>
+</Radio.Root>
+
+{/* 필수 상태 */}
+
+<Radio.Root required value={value} onValueChange={setValue}>
+  <Radio.Label>필수 상태</Radio.Label>
+
+{' '}
+
+<Radio.Item value="option1">
+  <Radio.Control />
+  <Radio.Indicator />
+  <Radio.Text>옵션 1</Radio.Text>
+</Radio.Item>
+
+  <Radio.Description>필수인 경우 *가 붙습니다.</Radio.Description>
+</Radio.Root>
+
+{/* 개별 옵션 비활성화 */}
+
+<Radio.Root value={value} onValueChange={setValue}>
+  <Radio.Label>부분 선택 불가</Radio.Label>
+
+{' '}
+
+<Radio.Item value="option1">
+  <Radio.Control />
+  <Radio.Indicator />
+  <Radio.Text>옵션 1</Radio.Text>
+</Radio.Item>
+
+  <Radio.Item value="option2" disabled>
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 2 (Disabled)</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+
+{/* 전체 그룹 비활성화 */}
+
+<Radio.Root disabled value={value} onValueChange={setValue}>
+  <Radio.Label>전체 선택 불가</Radio.Label>
+
+  <Radio.Item value="option1">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 1</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+`} />
+
+<br />
+
+### Sizes
+
+`Radio` 컴포넌트는 3가지 크기(`sm`, `md`, `lg`)를 지원합니다.
+
+<Canvas of={RadioStories.Sizes} />
+
+<Source
+  language="tsx"
+  code={`
+<Radio.Root size="sm" value={value} onValueChange={setValue}>
+  <Radio.Label>Small Size</Radio.Label>
+
+  <Radio.Item value="option1">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 1</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+
+<Radio.Root size="md" value={value} onValueChange={setValue}>
+  <Radio.Label>Medium Size</Radio.Label>
+
+  <Radio.Item value="option1">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 1</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+
+<Radio.Root size="lg" value={value} onValueChange={setValue}>
+  <Radio.Label>Large Size</Radio.Label>
+
+  <Radio.Item value="option1">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 1</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+`} />
+
+<br />
+
+### Orientation
+
+`Radio` 컴포넌트는 수직(`vertical`, 기본값)과 수평(`horizontal`) 방향을 지원합니다.
+
+<Canvas of={RadioStories.Orientation} />
+
+<Source
+  language="tsx"
+  code={`
+<Radio.Root orientation="vertical" value={value} onValueChange={setValue}>
+  <Radio.Label>수직 라디오</Radio.Label>
+
+{' '}
+
+<Radio.Item value="option1">
+  <Radio.Control />
+  <Radio.Indicator />
+  <Radio.Text>옵션 1</Radio.Text>
+</Radio.Item>
+
+  <Radio.Item value="option2">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 2</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+
+<Radio.Root orientation="horizontal" value={value} onValueChange={setValue}>
+  <Radio.Label>수평 라디오</Radio.Label>
+
+{' '}
+
+<Radio.Item value="option1">
+  <Radio.Control />
+  <Radio.Indicator />
+  <Radio.Text>옵션 1</Radio.Text>
+</Radio.Item>
+
+  <Radio.Item value="option2">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>옵션 2</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+`} />
+
+## 사용 가이드 (Usage)
+
+Compound Component 패턴으로 각 부분을 자유롭게 조합할 수 있습니다.
+
+```tsx
+const [value, setValue] = useState('option1');
+
+<Radio.Root value={value} onValueChange={setValue}>
+  <Radio.Label>배송 방법을 선택하세요</Radio.Label>
+
+  <Radio.Item value="standard">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>일반 배송 (무료)</Radio.Text>
+  </Radio.Item>
+
+  <Radio.Item value="express">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>빠른 배송 (+3,000원)</Radio.Text>
+  </Radio.Item>
+
+  <Radio.Item value="overnight">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>새벽 배송 (+5,000원)</Radio.Text>
+  </Radio.Item>
+
+  <Radio.Description>배송비는 결제 시 추가됩니다</Radio.Description>
+</Radio.Root>;
+```
+
+### 상태 관리
+
+`value`와 `onValueChange`를 사용하여 선택된 값을 관리합니다.
+
+```tsx
+const [deliveryMethod, setDeliveryMethod] = useState('standard');
+
+<Radio.Root value={deliveryMethod} onValueChange={setDeliveryMethod}>
+  <Radio.Label>배송 방법</Radio.Label>
+
+  <Radio.Item value="standard">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>일반 배송</Radio.Text>
+  </Radio.Item>
+
+  <Radio.Item value="express">
+    <Radio.Control />
+    <Radio.Indicator />
+    <Radio.Text>빠른 배송</Radio.Text>
+  </Radio.Item>
+</Radio.Root>
+
+<p>선택된 배송 방법: {deliveryMethod}</p>
+```
+
+### 키보드 네비게이션
+
+`Radio` 컴포넌트는 표준 키보드 네비게이션을 지원합니다:
+
+- **Tab**: 라디오 그룹으로 진입/탈출 (선택된 항목 또는 첫 번째 항목으로 포커스)
+- **Arrow Keys** (↑↓←→): 라디오 옵션 간 이동 및 자동 선택
+- **Space**: 현재 포커스된 옵션 선택
+
+라디오 그룹은 단일 선택이므로, 그룹 전체가 하나의 Tab stop으로 작동합니다.
